@@ -1,0 +1,63 @@
+{
+  "name": "@typhonjs-oclif/test-cli-cjs-interop",
+  "description": "Provides a CJS interop test CLI for ESM changes to @oclif v2 against Node 12.17.0+, 13.x, 14.0.0+, 15.0.0+",
+  "version": "0.0.0",
+  "author": "typhonrt",
+  "private": true,
+  "bin": {
+    "testcli-interop": "./bin/run.js"
+  },
+  "type": "module",
+  "bugs": "https://github.com/typhonjs-oclif/test-cli-cjs-interop/issues",
+  "dependencies": {
+    "@oclif/core": "git+https://github.com/typhonjs-oclif/core-esm.git"
+  },
+  "devDependencies": {
+    "@rauschma/stringio": "^1.4.0",
+    "@typhonjs-config/eslint-config": "^0.2.0",
+    "@typhonjs-oclif/test-cli-cjs-interop": "typhonjs-oclif/test-cli-cjs-interop",
+    "c8": "^7.6.0",
+    "chai": "^4.3.4",
+    "codecov": "^3.8.1",
+    "cross-spawn": "^7.0.3",
+    "eslint": "^7.22.0",
+    "mocha": "^8.3.2"
+  },
+  "engines": {
+    "node": ">=12.17.0 <13.0.0 || >=14.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/typhonjs-oclif/test-cli-cjs-interop",
+  "keywords": [
+    "oclif",
+    "test",
+    "CLI",
+    "cjs interop"
+  ],
+  "license": "MIT",
+  "oclif": {
+    "commands": "./src/commands",
+    "hooks": {
+      "init": [
+        "./src/hooks/init/init"
+      ]
+    },
+    "bin": "testcli-interop"
+  },
+  "repository": "typhonjs-oclif/test-cli-cjs-interop",
+  "scripts": {
+    "run-local-*nix": "./bin/run.js test",
+    "run-local-windows": "cd bin/ && run.cmd test",
+    "run-npm-cli": "testcli-interop test",
+    "eslint": "eslint .",
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "npm run eslint",
+    "prepublishOnly": "oclif-dev manifest",
+    "test": "c8 --reporter=lcov --reporter=text-summary mocha -color \"test/src/**/*.test.js\" --timeout 8000"
+  }
+}
