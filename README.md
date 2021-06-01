@@ -56,10 +56,12 @@ For more information on CJS named exports please see this [Node / Modules issue]
 
 The test source contains a [programmatic test](https://github.com/typhonjs-oclif-scratch/test-cli-cjs-interop/blob/main/test/src/programmatic.test.js)
 and [spawn tests](https://github.com/typhonjs-oclif-scratch/test-cli-cjs-interop/blob/main/test/src/spawn.test.js). To 
-accomplish this cross platform with Windows [cross-spawn](https://www.npmjs.com/package/cross-spawn)
-is utilized. The local bootstrap code, `./bin/run.js` is invoked. These tests cover execution for the CLI across
-MacOS, Ubuntu, and Windows and a wide range of Node versions proving it is possible to create an ESM Oclif CLI that
-can run on Node `12.17.0+` without using `--experimental-modules`.
+accomplish the spawn test cross-platform with Windows [cross-spawn](https://www.npmjs.com/package/cross-spawn)
+is utilized and the local bootstrap code, `./bin/run.js` is invoked. The programmatic tests demonstrate [fancy-test](https://www.npmjs.com/package/fancy-test)
+and use of [chai-as-promised](https://www.npmjs.com/package/chai-as-promised) invoking the main package export 
+via `./src/index.js`. These tests cover execution for the CLI across MacOS, Ubuntu, and Windows and a wide range of 
+Node versions proving it is possible to create an ESM Oclif CLI that can run on Node `12.17.0+` without using 
+`--experimental-modules`.
 
 ----
 ### Code Coverage
